@@ -1,40 +1,84 @@
+'use client'
+
 import styles from "./Input.module.scss";
-
+import { useState, useEffect } from "react";
 import Image from "next/image";
-
 import { Button } from "../Button/Button";
+import { Checkbox } from "../Checkbox";
 
 export const Input = () => {
+  const [password, setPassword] = useState("");
+  const [options, setOptions] = useState({
+    lowerCase: true,
+    upperCase: false,
+    specialSymbols: false,
+    numbers: false
+  });
+
+  const generatePassword = () => {
+    const length = 20;
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+    const special = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+    let chars = '';
+    if (options.lowerCase) chars += lowercase;
+    if (options.upperCase) chars += uppercase;
+    if (options.specialSymbols) chars += special;
+    if (options.numbers) chars += numbers;
+
+    if (chars === '') chars = lowercase;
+
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    setPassword(result);
+  };
+
+  useEffect(() => {
+    generatePassword();
+  }, []);
+
+  const handleCheckboxChange = (type: keyof typeof options) => {
+    setOptions(prev => ({
+      ...prev,
+      [type]: !prev[type]
+    }));
+  };
+
   return (
     <>
       <div className={styles.input}>
-        <input type="text" value="8Gx&kc2yd%CPnw" className={styles.input__input} />
-        <button className="refresh-btn">
+        <input type="text" value={password} className={styles.input__input} readOnly />
+        <button className="refresh-btn" onClick={generatePassword}>
           <Image src="/path2.svg" alt="refresh" width={20} height={20} />
         </button>
         <Button />
       </div>
 
-      <div>
-        <label>
-          <input type="checkbox" />
-          <span className="checkbox">lower case</span>
-        </label>
-
-        <label>
-          <input type="checkbox" />
-          <span className="checkbox">upper case</span>
-        </label>
-
-        <label>
-          <input type="checkbox" />
-          <span className="checkbox">special symbols</span>
-        </label>
-        
-        <label>
-          <input type="checkbox" />
-          <span className="checkbox">numbers</span>
-        </label>
+      <div className={styles.input__checkboxes}>
+        <Checkbox 
+          text="lower case" 
+          checked={options.lowerCase}
+          onChange={() => handleCheckboxChange('lowerCase')} 
+        />
+        <Checkbox 
+          text="upper case" 
+          checked={options.upperCase}
+          onChange={() => handleCheckboxChange('upperCase')} 
+        />
+        <Checkbox 
+          text="special symbols" 
+          checked={options.specialSymbols}
+          onChange={() => handleCheckboxChange('specialSymbols')} 
+        />
+        <Checkbox 
+          text="numbers" 
+          checked={options.numbers}
+          onChange={() => handleCheckboxChange('numbers')} 
+        />
       </div>
     </>
   );

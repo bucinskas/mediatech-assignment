@@ -4,7 +4,11 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  margin: 72px 0;
+  margin: 22px 0;
+
+  @media (min-width: 787px) {
+    margin: 72px 0;
+  }
 
   &__wrapper {
     max-width: 953px;
@@ -21,19 +25,43 @@
     display: flex;
     width: 100%;
     height: 100%;
+    flex-direction: column;
+
+    @media (min-width: 787px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__inverted {
-    flex-direction: row-reverse;
+    flex-direction: column;
+
+    @media (min-width: 787px) {
+      flex-direction: row-reverse;
+    }
+
+    .fiftyFifty__right {
+      @media (min-width: 787px) {
+        width: 560px;
+        min-width: 560px;
+      }
+    }
   }
 
   &__left {
     width: 100%;
     height: 100%;
   }
+
   &__right {
-    min-width: 566px;
+    width: 100%;
     height: 100%;
+
+    @media (min-width: 787px) {
+      width: 566px;
+      min-width: 566px;
+    }
+
   }
   &__content {
     padding: 20px;
