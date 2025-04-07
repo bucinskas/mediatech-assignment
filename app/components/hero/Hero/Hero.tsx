@@ -1,17 +1,22 @@
 import styles from "./Hero.module.scss";
 
+import { HeroProps } from "./types";
+
 import { Input } from "../Input";
 
-export const Hero = () => {
+export const Hero = ({heading, description, secondaryDescription}: HeroProps) => {
   return (
     <section className={styles.hero}>
-        <div>
-            <h1 className={styles.hero__heading}>Generate strong passwords</h1>
-            <p className={styles.hero__description}>Upgrade the security of your online accounts.</p>
-            <p className={styles.hero__description}>Create strong passwords that are completely random and impossible to guess.</p>
-        </div>
-
-        <Input/>
+      <div>
+        <h1 className={styles.hero__heading}>{heading}</h1>
+        <p className={styles.hero__description}>
+          {description}
+        </p>
+        <p className={styles.hero__description}>
+          {secondaryDescription}
+        </p>
+      </div>
+      <Input />
     </section>
   );
 };

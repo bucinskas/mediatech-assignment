@@ -29,7 +29,6 @@
 
     @media (min-width: 787px) {
       flex-direction: row;
-      justify-content: space-between;
     }
   }
 
@@ -67,6 +66,7 @@
     padding: 20px;
     text-align: center;
   }
+  
   &__title {
     font-size: 31px;
     font-weight: bold;

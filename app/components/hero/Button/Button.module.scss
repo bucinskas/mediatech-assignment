@@ -7,7 +7,12 @@
     border: none;
     color: white;
     font-weight: 700;
-    min-width: 187px;
+    min-width: 100px;
     height: 46px;
-    font-size: 16px;
+    font-size: 11px;
+
+    @media (min-width: 787px) {
+        font-size: 16px;
+        min-width: 187px;
+    }
 }

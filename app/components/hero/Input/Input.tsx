@@ -52,8 +52,8 @@ export const Input = () => {
     <>
       <div className={styles.input}>
         <input type="text" value={password} className={styles.input__input} readOnly />
-        <button className="refresh-btn" onClick={generatePassword}>
-          <Image src="/path2.svg" alt="refresh" width={20} height={20} />
+        <button className={styles.input__button} onClick={generatePassword}>
+          <Image src="/path2.png" alt="Refresh icon" width={20} height={20} />
         </button>
         <Button />
       </div>

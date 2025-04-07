@@ -8,8 +8,15 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Cybernews",
-  description: "Generate strong passwords",
+  title: "Cybernews - Password Generator",
+  description: "Generate strong passwords with our free password generator tool. Create secure passwords for your online accounts.",
+  keywords: [
+    "password generator",
+    "strong",
+    "free",
+    "secure",
+    "online"
+  ]
 };
 
 export default function RootLayout({
