@@ -38,11 +38,16 @@
     @media (min-width: 787px) {
       flex-direction: row-reverse;
     }
-
     .fiftyFifty__right {
       @media (min-width: 787px) {
         width: 560px;
         min-width: 560px;
+      }
+    }  
+    .fiftyFifty__left {
+      @media (min-width: 787px) {
+        display: flex;
+        justify-content: flex-end;
       }
     }
   }

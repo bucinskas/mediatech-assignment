@@ -1,0 +1,42 @@
+
+  .popup {
+    position: absolute;
+    top: 150px;
+    left: 40%;
+    transform: translateX(-50%);
+    margin-top: 0.5rem;
+    background-color: #1f2937;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    animation: fadeIn 0.3s ease-out forwards;
+
+    @media (min-width: 787px) {
+      left: 50%;  
+      top: 130px;
+    }
+
+    &__popupContent {
+      display: flex;
+      align-items: center;
+    }
+
+    &__checkIcon {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-right: 0.5rem;
+      color: #34d399; // Green color for the checkmark
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 10px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }

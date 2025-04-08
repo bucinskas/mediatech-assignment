@@ -5,15 +5,28 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "../Button/Button";
 import { Checkbox } from "../Checkbox";
+import { PopUp } from "../../PopUp";
 
 export const Input = () => {
   const [password, setPassword] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
   const [options, setOptions] = useState({
     lowerCase: false,
     upperCase: false,
     specialSymbols: false,
     numbers: false
   });
+
+  const handleCopyPassword = () => {
+    navigator.clipboard.writeText(password)
+      .then(() => {
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 2000);
+      })
+      .catch(err => {
+        console.error("Failed to copy password: ", err);
+      });
+  };
 
   const generatePassword = () => {
     const length = 20;
@@ -56,9 +69,13 @@ export const Input = () => {
         <button className={styles.input__button} onClick={generatePassword}>
           <Image src="/path2.png" alt="Refresh icon" width={20} height={20} />
         </button>
-        <Button text="Copy Password" />
+        <Button text="Copy Password" onClick={handleCopyPassword} />
       </div>
 
+      {showPopup && (
+        <PopUp />
+      )}
+   
       <div className={styles.input__checkboxes}>
         <Checkbox 
           text="lower case" 

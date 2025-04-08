@@ -1,6 +1,10 @@
 .checkbox {
     display: flex;
-    margin-right: 25px;
+    margin-right: 0;
+    
+    @media (min-width: 787px) {
+        margin-right: 25px;
+    }
 
     &__text {
         color: white;
