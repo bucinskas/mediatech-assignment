@@ -1,9 +1,11 @@
 import styles from "./Button.module.scss";
 
-export const Button = () => {
+import { ButtonProps } from "./types";
+
+export const Button = ({text}: ButtonProps) => {
   return (
    <button className={styles.button}>
-       <span>Copy Password</span>
+       <span>{text}</span>
    </button>
   );
 };

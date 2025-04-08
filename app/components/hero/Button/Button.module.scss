@@ -8,8 +8,14 @@
     color: white;
     font-weight: 700;
     min-width: 100px;
-    height: 46px;
+    height: 47px;
     font-size: 11px;
+    outline: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #08A057;
+    }
 
     @media (min-width: 787px) {
         font-size: 16px;

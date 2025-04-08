@@ -9,7 +9,7 @@ import { Checkbox } from "../Checkbox";
 export const Input = () => {
   const [password, setPassword] = useState("");
   const [options, setOptions] = useState({
-    lowerCase: true,
+    lowerCase: false,
     upperCase: false,
     specialSymbols: false,
     numbers: false
@@ -23,12 +23,13 @@ export const Input = () => {
     const special = '!@#$%^&*()_+-=[]{}|;:,.<>?';
 
     let chars = '';
+    
     if (options.lowerCase) chars += lowercase;
     if (options.upperCase) chars += uppercase;
     if (options.specialSymbols) chars += special;
     if (options.numbers) chars += numbers;
 
-    if (chars === '') chars = lowercase;
+    if (chars === '') chars = uppercase + lowercase + numbers + special;
 
     let result = '';
     for (let i = 0; i < length; i++) {
@@ -55,7 +56,7 @@ export const Input = () => {
         <button className={styles.input__button} onClick={generatePassword}>
           <Image src="/path2.png" alt="Refresh icon" width={20} height={20} />
         </button>
-        <Button />
+        <Button text="Copy Password" />
       </div>
 
       <div className={styles.input__checkboxes}>
